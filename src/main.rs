@@ -1,7 +1,8 @@
 mod day1;
+mod day2;
 use std::env;
 
-const CURRENT_DAY : u32 = 1;
+const CURRENT_DAY : u32 = 2;
 
 fn main() { 
     let args: Vec<String> = env::args().collect();
@@ -27,6 +28,7 @@ fn main() {
 
     match day {
         1 => day1::run(exercise),
+        2 => day2::run(exercise),
         _ => usage()
     }
 }
