@@ -13,7 +13,7 @@ pub fn run(exercise : Exercise) {
 }
 
 fn process2() {
-    let result = find_codes(19690720);
+    let result = find_codes(19_690_720);
     println!("{:?}", result);
     println!("{}", result.0 * 100 + result.1);
 }
@@ -44,7 +44,7 @@ fn process() {
 
 fn get_values() -> Vec<u32> {
     let input = fs::read_to_string("input/input2").expect("Input failed.");
-    let splits : Vec<&str> = input.split(",").collect();
+    let splits : Vec<&str> = input.split(',').collect();
     let mut values : Vec<u32> = Vec::new();
     for s in splits {
         values.push(s.trim().parse::<u32>().expect("Parsing to int failed"));
