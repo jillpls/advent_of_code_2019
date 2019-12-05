@@ -1,3 +1,26 @@
+/*
+ *   Copyright (c) 2019 Jill Enke <jill.enke@gmail.com>
+ *   All rights reserved.
+
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ 
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ 
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ */
+
 use crate::Exercise;
 use std::fs;
 
@@ -18,8 +41,8 @@ fn process2() {
     println!("{}", result.0 * 100 + result.1);
 }
 
-fn find_codes(result : u32) -> (u32, u32) {
-    let values_init = get_values();
+fn find_codes(result : i64) -> (i64, i64) {
+    let values_init = get_values("input/input2");
     for noun in 0..100 { 
             for verb in 0..100 {
             let mut values = values_init.clone();
@@ -35,24 +58,24 @@ fn find_codes(result : u32) -> (u32, u32) {
 }
 
 fn process() {
-    let mut values = get_values();
+    let mut values = get_values("input/input2");
     values[1] = 12;
     values[2] = 2;
     update_codes(&mut values);
     println!("{}", values[0]);
 }
 
-fn get_values() -> Vec<u32> {
-    let input = fs::read_to_string("input/input2").expect("Input failed.");
+pub fn get_values(input_file : &str) -> Vec<i64> {
+    let input = fs::read_to_string(input_file).expect("Input failed.");
     let splits : Vec<&str> = input.split(',').collect();
-    let mut values : Vec<u32> = Vec::new();
+    let mut values : Vec<i64> = Vec::new();
     for s in splits {
-        values.push(s.trim().parse::<u32>().expect("Parsing to int failed"));
+        values.push(s.trim().parse::<i64>().expect("Parsing to int failed"));
     }
     values
 }
 
-fn update_codes(values : &mut Vec<u32>) {
+fn update_codes(values : &mut Vec<i64>) {
     let mut idx = 0;
     loop {
         match values[idx] {
