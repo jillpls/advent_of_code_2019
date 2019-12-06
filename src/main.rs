@@ -26,9 +26,10 @@ pub mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 use std::env;
 
-const CURRENT_DAY : u32 = 5;
+const CURRENT_DAY : u32 = 6;
 
 fn main() { 
     simple_logger::init().expect("Starting logger failed.");
@@ -62,6 +63,7 @@ fn main() {
         3 => day3::run(exercise),
         4 => day4::run(exercise),
         5 => day5::run(exercise),
+        6 => day6::run(exercise),
         _ => usage()
     }
 }
